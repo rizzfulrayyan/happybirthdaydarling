@@ -2,46 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Happy birthday, my love</title>
-  <link rel="icon" href="https://emojicdn.elk.sh/🎂" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Love</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* ====== BASE STYLES ====== */
-    body {
+    * {
       margin: 0;
       padding: 0;
-      color: #fff;
-      text-align: center;
-      min-height: 100vh;
-      background: url('https://i.pinimg.com/736x/4f/d7/ce/4fd7ce13e677485ec2849de64473c258.jpg') no-repeat center center fixed;
-      background-size: cover;
-      position: relative;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
     }
-    
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      text-align: center;
+    }
+
     body::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=2070') no-repeat center center;
+      background-size: cover;
+      opacity: 0.7;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255, 0, 150, 0.3), rgba(0, 100, 255, 0.3));
       z-index: -1;
     }
 
-    /* ====== PAGE CONTAINER ====== */
     .page-container {
       display: flex;
       width: 400%;
       height: 100vh;
-      transition: transform 0.5s ease-in-out;
-      touch-action: pan-y;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .page {
@@ -51,129 +60,88 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 15px;
-      box-sizing: border-box;
-    }
-
-    /* ====== CONTENT CONTAINER ====== */
-    .container {
-      position: relative;
-      z-index: 1;
-      width: 95%;
-      max-width: 800px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 15px;
       padding: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      overflow-y: auto;
-      max-height: 80vh;
-      -webkit-overflow-scrolling: touch;
-      margin: 20px 0;
     }
 
-    /* Mobile container adjustments */
-    @media (max-width: 767px) {
-      .container {
-        max-height: 75vh;
-        padding: 15px;
-        width: 90%;
-      }
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 800px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* ====== TYPOGRAPHY ====== */
-    h1, .page-2 h2, .page-3 h2, .page-4 h2 {
+    h1, h2 {
       font-family: 'Parisienne', cursive;
       color: #ffcce6;
-      margin: 15px 0;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      line-height: 1.1;
-      background: linear-gradient(to right, #ffcce6, #ff99cc);
+      margin-bottom: 25px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #a18cd1);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: glow 2.5s ease-in-out infinite alternate;
+      animation: glow 3s ease-in-out infinite alternate;
     }
 
-    /* Responsive font sizes */
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
-    p { font-size: 1.1rem; }
-
-    @media (min-width: 768px) {
-      h1 { font-size: 4rem; }
-      h2 { font-size: 3rem; }
-      p { font-size: 1.2rem; }
+    h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
     }
 
-    @keyframes glow {
-      0%, 100% { 
-        text-shadow: 
-          0 0 5px #ffcce6,
-          0 0 10px rgba(255, 153, 204, 0.6);
-      }
-      50% { 
-        text-shadow: 
-          0 0 15px #ffcce6,
-          0 0 25px rgba(255, 153, 204, 0.8);
-      }
+    h2 {
+      font-size: 2.8rem;
     }
 
     p {
+      font-size: 1.2rem;
       line-height: 1.8;
       margin: 20px 0;
       text-align: center;
     }
 
     .heart {
-      font-size: 1.5rem;
-      color: #ffd6f3;
-      animation: float 3s ease-in-out infinite;
-      margin: 25px 0;
-      font-style: italic;
-      font-weight: 400;
-      text-shadow: 0 0 10px rgba(255, 214, 243, 0.7);
+      font-size: 1.8rem;
+      color: #ff6b6b;
+      animation: float 4s ease-in-out infinite;
+      margin: 30px 0;
+      text-shadow: 0 0 15px rgba(255, 107, 107, 0.6);
     }
 
     .footer {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #ffd6f3;
       margin-top: 30px;
       font-family: 'Parisienne', cursive;
-      text-shadow: 0 0 8px rgba(255, 214, 243, 0.6);
+      text-shadow: 0 0 10px rgba(255, 214, 243, 0.7);
     }
 
-    /* ====== PHOTO CAROUSEL ====== */
     .memories-container {
       width: 100%;
-      max-width: 600px;
-      margin: 0 auto 20px;
+      max-width: 700px;
+      margin: 20px auto;
       position: relative;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 15px;
-      padding: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
     .photo-carousel {
       display: flex;
       overflow: hidden;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      border-radius: 10px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     }
 
     .memory {
       min-width: 100%;
-      scroll-snap-align: start;
       position: relative;
     }
 
     .memory-img {
       width: 100%;
-      height: 300px;
+      height: 350px;
       object-fit: cover;
-      border-radius: 10px;
+      display: block;
     }
 
     .memory-caption {
@@ -181,79 +149,81 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
       color: white;
-      padding: 15px;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      text-align: center;
+      padding: 20px;
       font-family: 'Parisienne', cursive;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     }
 
     .carousel-dots {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin-top: 15px;
+      gap: 12px;
+      margin-top: 20px;
     }
 
     .dot {
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      background: rgba(255, 204, 230, 0.5);
+      background: rgba(255, 204, 230, 0.6);
       cursor: pointer;
       transition: all 0.3s;
     }
 
     .dot.active {
       background: #ff99cc;
-      transform: scale(1.2);
+      transform: scale(1.3);
     }
 
     .memory-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 204, 230, 0.7);
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 204, 230, 0.8);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      z-index: 2;
-      color: white;
+      z-index: 10;
+      color: #333;
       font-weight: bold;
-      user-select: none;
+      font-size: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+
+    .memory-nav:hover {
+      background: rgba(255, 153, 204, 0.9);
+      transform: translateY(-50%) scale(1.1);
     }
 
     .memory-prev {
-      left: 10px;
+      left: 15px;
     }
 
     .memory-next {
-      right: 10px;
+      right: 15px;
     }
 
-    /* ====== NAVIGATION ARROWS ====== */
     .nav-arrows {
       position: fixed;
-      bottom: 25px;
+      bottom: 30px;
       left: 0;
       right: 0;
       display: flex;
       justify-content: center;
       gap: 30px;
       z-index: 1000;
-      padding: 0 20px;
     }
 
     .arrow {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       background: rgba(255, 153, 204, 0.9);
       border-radius: 50%;
       display: flex;
@@ -261,71 +231,147 @@
       align-items: center;
       cursor: pointer;
       transition: all 0.3s;
-      font-size: 24px;
+      font-size: 28px;
       color: #fff;
-      user-select: none;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-      touch-action: manipulation;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
     .arrow:hover {
-      background: rgba(255, 153, 204, 0.9);
+      background: rgba(255, 102, 178, 0.9);
       transform: scale(1.1);
     }
 
     .arrow:active {
       transform: scale(0.95);
-      background: rgba(255, 102, 178, 0.9);
     }
 
     .arrow.disabled {
-      opacity: 0.3;
+      opacity: 0.4;
       pointer-events: none;
     }
 
-    /* Mobile arrow adjustments */
-    @media (max-width: 767px) {
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4, #a18cd1);
+      z-index: 1001;
+      transition: width 0.3s ease;
+    }
+
+    .music-note {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      font-size: 28px;
+      animation: pulse 2s infinite;
+      color: #ff6b6b;
+      z-index: 100;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px rgba(255, 154, 158, 0.7);
+      }
+      100% {
+        text-shadow: 0 0 25px rgba(255, 154, 158, 0.9), 0 0 40px rgba(255, 107, 107, 0.6);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      h2 {
+        font-size: 2.2rem;
+      }
+      
+      p {
+        font-size: 1.1rem;
+      }
+      
+      .memory-img {
+        height: 280px;
+      }
+      
+      .memory-caption {
+        font-size: 1.5rem;
+        padding: 15px;
+      }
+      
+      .arrow {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+      
       .nav-arrows {
         bottom: 20px;
         gap: 20px;
       }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .memory-img {
+        height: 220px;
+      }
+      
+      .memory-caption {
+        font-size: 1.3rem;
+      }
+      
       .arrow {
         width: 45px;
         height: 45px;
         font-size: 20px;
       }
     }
-
-    /* Desktop arrow adjustments */
-    @media (min-width: 768px) {
-      .nav-arrows {
-        bottom: 30px;
-        left: 30px;
-        justify-content: flex-start;
-      }
-    }
-
-    /* ====== ANIMATIONS ====== */
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
   </style>
 </head>
 <body>
-  <!-- ====== ALL 4 PAGES ====== -->
+  <div class="overlay"></div>
+  <div class="progress-bar" id="progressBar"></div>
+  <div class="music-note">♪</div>
+
   <div class="page-container" id="pageContainer">
     <!-- Page 1 -->
     <div class="page page-1">
       <div class="container">
-        <h1>Happy 14th Birthday to the love of my life. ♥</h1>
+        <h1>Happy 14th Birthday to the Love of My Life ♥</h1>
         <div class="content">
           <p>
             To the girl who made me value myself like no other, happy birthday, Naurin.<br>
             You aren't just my girl, but my world, my universe, my gift, my treasure.<br>
             My blessing, my love, my dearest, my partner, my wife, my everything.
           </p>
-          <div class="heart">just remember, you're worth more than you think <3</div>
+          <div class="heart">Just remember, you're worth more than you think &lt;3</div>
           <p class="footer">11th July, 2025 🫶</p>
         </div>
       </div>
@@ -339,10 +385,10 @@
           <p>
             I promise to always be there for you<br>
             That I'll never leave you alone<br>
-            That I'll always annoy you<br>
-            And love you more each day <3
+            That I'll always cherish you<br>
+            And love you more each day &lt;3
           </p>
-          <div class="heart">okay please marry me already 😔</div>
+          <div class="heart">Okay please marry me already 😔</div>
         </div>
       </div>
     </div>
@@ -350,29 +396,21 @@
     <!-- Page 3 -->
     <div class="page page-3">
       <div class="container">
-        <h2>Times we met ♥</h2>
+        <h2>Times We Met ♥</h2>
         <div class="content">
           <div class="memories-container">
             <div class="photo-carousel" id="carousel">
               <div class="memory">
-                <img src="https://raw.githubusercontent.com/rizzfulrayyan/happybirthdaydarling/main/image1.png" alt="Our memory" class="memory-img">
+                <div class="memory-img" style="background: linear-gradient(45deg, #ff9a9e, #fad0c4);"></div>
                 <div class="memory-caption">When we first met ♥</div>
               </div>
               <div class="memory">
-                <img src="https://raw.githubusercontent.com/rizzfulrayyan/happybirthdaydarling/main/image2.png" alt="Our memory" class="memory-img">
-                <div class="memory-caption">That scrumptious tongue of yours 👅</div>
+                <div class="memory-img" style="background: linear-gradient(45deg, #a18cd1, #fbc2eb);"></div>
+                <div class="memory-caption">That beautiful smile of yours 😊</div>
               </div>
               <div class="memory">
-                <img src="https://raw.githubusercontent.com/rizzfulrayyan/happybirthdaydarling/main/image3.png" alt="Our memory" class="memory-img">
-                <div class="memory-caption">The prettiest girl with her husband <3</div>
-              </div>
-              <div class="memory">
-                <img src="https://raw.githubusercontent.com/rizzfulrayyan/happybirthdaydarling/main/image4.png" alt="Our memory" class="memory-img">
-                <div class="memory-caption">That kiss 💋😍</div>
-              </div>
-              <div class="memory">
-                <img src="https://raw.githubusercontent.com/rizzfulrayyan/happybirthdaydarling/main/image6.png" alt="Our memory" class="memory-img">
-                <div class="memory-caption">My favorite person</div>
+                <div class="memory-img" style="background: linear-gradient(45deg, #fbc2eb, #a6c1ee);"></div>
+                <div class="memory-caption">The prettiest girl with her husband &lt;3</div>
               </div>
             </div>
             <div class="carousel-dots" id="dots"></div>
@@ -380,9 +418,9 @@
             <div class="memory-nav memory-next" id="nextMem">❯</div>
           </div>
           <p>
-            Every photo with you holds meaning<br>
-            More than any photo I've ever taken.<br>
-            These memories are my most treasured possessions
+            Every moment with you is special<br>
+            More precious than any treasure<br>
+            These memories are my most cherished possessions
           </p>
           <div class="heart">I love you more than words can express</div>
         </div>
@@ -397,7 +435,7 @@
           <div class="love-letter">
             <p>You're not just my girlfriend, or wife. You're my home, my safe place, my greatest adventure.</p>
             <p>On this birthday, I want to make you a promise beyond all others. I will spend every day proving that you made the right choice in loving me. I'll be the man who deserves your heart, who protects your smile, and who never lets a day pass without making you feel adored. However long forever is, it won't be enough time with you.</p>
-            <p>Happy 14th birthday to the girl who taught me the true meaning of love. May this year bring you even a fraction of the joy you've brought into my life. I love you more than these words could ever express, more than any poem could capture, more than forever could contain. I'll promise to you that no matter what happens, we will stick together, fix things together, and make it work out.</p>
+            <p>Happy 14th birthday to the girl who taught me the true meaning of love. May this year bring you even a fraction of the joy you've brought into my life. I love you more than these words could ever express, more than any poem could capture, more than forever could contain.</p>
             <div class="heart">Happy birthday, I love you.</div>
           </div>
         </div>
@@ -411,84 +449,64 @@
     <div class="arrow" id="arrowRight">→</div>
   </div>
 
-  <audio autoplay loop id="bgMusic">
-    <source src="golden-hour.mp3" type="audio/mpeg">
+  <!-- Audio Element -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // ====== PAGE NAVIGATION ======
+    // Initialize variables
     const pageContainer = document.getElementById('pageContainer');
     const arrowLeft = document.getElementById('arrowLeft');
     const arrowRight = document.getElementById('arrowRight');
+    const progressBar = document.getElementById('progressBar');
     let currentPage = 0;
     const totalPages = 4;
-
-    // Initialize navigation
-    updateArrows();
-
-    // Arrow click handlers
-    arrowRight.addEventListener('click', goNext);
-    arrowLeft.addEventListener('click', goPrev);
-
-    function goNext() {
-      if (currentPage < totalPages - 1) {
-        currentPage++;
-        moveToPage(currentPage);
-      }
-    }
-
-    function goPrev() {
-      if (currentPage > 0) {
-        currentPage--;
-        moveToPage(currentPage);
-      }
-    }
-
-    function moveToPage(pageIndex) {
-      const translateValue = -pageIndex * 25;
-      pageContainer.style.transform = `translateX(${translateValue}%)`;
-      updateArrows();
-    }
-
+    
+    // Update navigation arrows
     function updateArrows() {
       arrowLeft.classList.toggle('disabled', currentPage === 0);
       arrowRight.classList.toggle('disabled', currentPage === totalPages - 1);
     }
-
-    // ====== TOUCH SWIPE NAVIGATION ======
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    document.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, {passive: true});
-
-    document.addEventListener('touchend', e => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, {passive: true});
-
-    function handleSwipe() {
-      const swipeThreshold = 50; // Minimum swipe distance in pixels
+    
+    // Move to a specific page
+    function moveToPage(pageIndex) {
+      currentPage = pageIndex;
+      const translateValue = -pageIndex * 25;
+      pageContainer.style.transform = `translateX(${translateValue}%)`;
+      updateArrows();
       
-      if (touchEndX < touchStartX - swipeThreshold) {
-        // Swiped left - go next
-        goNext();
-      } else if (touchEndX > touchStartX + swipeThreshold) {
-        // Swiped right - go previous
-        goPrev();
+      // Update progress bar
+      progressBar.style.width = `${(currentPage + 1) * 25}%`;
+    }
+    
+    // Next page
+    function goNext() {
+      if (currentPage < totalPages - 1) {
+        moveToPage(currentPage + 1);
       }
     }
-
-    // ====== PHOTO CAROUSEL ======
+    
+    // Previous page
+    function goPrev() {
+      if (currentPage > 0) {
+        moveToPage(currentPage - 1);
+      }
+    }
+    
+    // Initialize arrows
+    arrowRight.addEventListener('click', goNext);
+    arrowLeft.addEventListener('click', goPrev);
+    
+    // Photo carousel functionality
     const carousel = document.getElementById('carousel');
     const dotsContainer = document.getElementById('dots');
     const prevBtn = document.getElementById('prevMem');
     const nextBtn = document.getElementById('nextMem');
     const memories = document.querySelectorAll('.memory');
     let currentMemory = 0;
-
-    // Create dots
+    
+    // Create dots for carousel
     memories.forEach((_, index) => {
       const dot = document.createElement('div');
       dot.classList.add('dot');
@@ -498,18 +516,19 @@
       });
       dotsContainer.appendChild(dot);
     });
-
+    
     // Carousel navigation
     prevBtn.addEventListener('click', () => {
       currentMemory = (currentMemory - 1 + memories.length) % memories.length;
       goToMemory(currentMemory);
     });
-
+    
     nextBtn.addEventListener('click', () => {
       currentMemory = (currentMemory + 1) % memories.length;
       goToMemory(currentMemory);
     });
-
+    
+    // Go to specific memory
     function goToMemory(index) {
       currentMemory = index;
       carousel.scrollTo({
@@ -518,60 +537,67 @@
       });
       updateDots();
     }
-
+    
+    // Update carousel dots
     function updateDots() {
       document.querySelectorAll('.dot').forEach((dot, index) => {
         dot.classList.toggle('active', index === currentMemory);
       });
     }
-
-    // ====== AUDIO AUTOPLAY ======
-    document.addEventListener('DOMContentLoaded', function() {
-      const audio = document.getElementById('bgMusic');
+    
+    // Swipe functionality for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+    
+    document.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, {passive: true});
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
       
-      // Try to play audio automatically
-      const playAudio = () => {
-        audio.play().catch(e => {
-          console.log("Autoplay blocked, waiting for user interaction");
-          // Add play button if autoplay fails
-          const playBtn = document.createElement('button');
-          playBtn.innerHTML = '🔊 Play Music';
-          playBtn.style.position = 'fixed';
-          playBtn.style.bottom = '80px';
-          playBtn.style.right = '20px';
-          playBtn.style.zIndex = '1000';
-          playBtn.style.padding = '10px 15px';
-          playBtn.style.borderRadius = '20px';
-          playBtn.style.backgroundColor = '#ff99cc';
-          playBtn.style.color = 'white';
-          playBtn.style.border = 'none';
-          playBtn.onclick = () => {
-            audio.play();
-            playBtn.remove();
-          };
-          document.body.appendChild(playBtn);
+      if (touchEndX < touchStartX - swipeThreshold) {
+        goNext();
+      } else if (touchEndX > touchStartX + swipeThreshold) {
+        goPrev();
+      }
+    }
+    
+    // Audio playback with auto-play
+    const audio = document.getElementById('bgMusic');
+    
+    // Function to play audio
+    function playAudio() {
+      // Try to play audio
+      const playPromise = audio.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          // Autoplay was prevented, show instructions
+          console.log("Autoplay prevented:", error);
+          alert("Please interact with the page to enable audio playback. Click anywhere to start music.");
         });
-      };
-      
-      // Try to play on load
+      }
+    }
+    
+    // Play audio on user interaction
+    document.addEventListener('click', function() {
       playAudio();
-      
-      // Also allow play on first user interaction
-      document.body.addEventListener('click', function firstInteraction() {
-        playAudio();
-        document.body.removeEventListener('click', firstInteraction);
-      }, { once: true });
+      // Remove the event listener after the first interaction
+      document.removeEventListener('click', arguments.callee);
     });
-
-    // ====== MOBILE DETECTION ======
-    function isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
-
-    // Adjust layout for mobile if needed
-    if (isMobile()) {
-      document.documentElement.style.touchAction = 'pan-y';
-    }
+    
+    // Initialize progress bar
+    progressBar.style.width = "25%";
+    
+    // Initial update
+    updateArrows();
+    updateDots();
   </script>
 </body>
 </html>
