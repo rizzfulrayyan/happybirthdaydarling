@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Happy birthday, my love</title>
   <link rel="icon" href="https://emojicdn.elk.sh/🎂" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
   
   <style>
+    /* ====== BASE STYLES ====== */
     body {
-      margin: 0; 
+      margin: 0;
       padding: 0;
       color: #fff;
       text-align: center;
@@ -20,6 +21,7 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 300;
       overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
     
     body::before {
@@ -33,11 +35,13 @@
       z-index: -1;
     }
 
+    /* ====== PAGE CONTAINER ====== */
     .page-container {
       display: flex;
       width: 400%;
       height: 100vh;
-      transition: transform 1s ease-in-out;
+      transition: transform 0.5s ease-in-out;
+      touch-action: pan-y;
     }
 
     .page {
@@ -51,30 +55,36 @@
       box-sizing: border-box;
     }
 
+    /* ====== CONTENT CONTAINER ====== */
     .container {
       position: relative;
       z-index: 1;
-      width: 90%;
+      width: 95%;
       max-width: 800px;
       background: rgba(0, 0, 0, 0.6);
       border-radius: 15px;
       padding: 20px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       overflow-y: auto;
-      max-height: 75vh;
+      max-height: 80vh;
       -webkit-overflow-scrolling: touch;
+      margin: 20px 0;
     }
 
-    .content {
-      width: 100%;
-      color: #fff;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    /* Mobile container adjustments */
+    @media (max-width: 767px) {
+      .container {
+        max-height: 75vh;
+        padding: 15px;
+        width: 90%;
+      }
     }
 
+    /* ====== TYPOGRAPHY ====== */
     h1, .page-2 h2, .page-3 h2, .page-4 h2 {
       font-family: 'Parisienne', cursive;
       color: #ffcce6;
-      margin-bottom: 15px;
+      margin: 15px 0;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       line-height: 1.1;
       background: linear-gradient(to right, #ffcce6, #ff99cc);
@@ -84,37 +94,33 @@
       animation: glow 2.5s ease-in-out infinite alternate;
     }
 
-    h1 { font-size: 2.5em; }
-    h2 { font-size: 2em; }
-    p { font-size: 1.1em; }
+    /* Responsive font sizes */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    p { font-size: 1.1rem; }
 
     @media (min-width: 768px) {
-      h1 { font-size: 5em; }
-      h2 { font-size: 4em; }
-      p { font-size: 1.2em; }
-      .container { max-height: 70vh; }
+      h1 { font-size: 4rem; }
+      h2 { font-size: 3rem; }
+      p { font-size: 1.2rem; }
     }
 
     @keyframes glow {
-      0% {
-        filter: drop-shadow(0 0 5px rgba(255, 153, 204, 0.5));
+      0%, 100% { 
         text-shadow: 
           0 0 5px #ffcce6,
-          0 0 10px rgba(255, 153, 204, 0.6),
-          0 0 15px rgba(255, 102, 178, 0.4);
+          0 0 10px rgba(255, 153, 204, 0.6);
       }
-      100% {
-        filter: drop-shadow(0 0 15px rgba(255, 153, 204, 0.8));
+      50% { 
         text-shadow: 
-          0 0 10px #ffcce6,
-          0 0 20px rgba(255, 153, 204, 0.8),
-          0 0 30px rgba(255, 102, 178, 0.6);
+          0 0 15px #ffcce6,
+          0 0 25px rgba(255, 153, 204, 0.8);
       }
     }
 
     p {
       line-height: 1.8;
-      margin: 20px 15px;
+      margin: 20px 0;
       text-align: center;
     }
 
@@ -129,13 +135,14 @@
     }
 
     .footer {
-      font-size: 1.1em;
+      font-size: 1.1rem;
       color: #ffd6f3;
       margin-top: 30px;
       font-family: 'Parisienne', cursive;
       text-shadow: 0 0 8px rgba(255, 214, 243, 0.6);
     }
 
+    /* ====== PHOTO CAROUSEL ====== */
     .memories-container {
       width: 100%;
       max-width: 600px;
@@ -176,12 +183,12 @@
       right: 0;
       background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
       color: white;
-      padding: 20px;
+      padding: 15px;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
       text-align: center;
       font-family: 'Parisienne', cursive;
-      font-size: 1.5em;
+      font-size: 1.5rem;
     }
 
     .carousel-dots {
@@ -231,55 +238,34 @@
       right: 10px;
     }
 
-    /* ====== MOBILE NAVIGATION FIXES ====== */
+    /* ====== NAVIGATION ARROWS ====== */
     .nav-arrows {
       position: fixed;
-      bottom: 80px;
+      bottom: 25px;
       left: 0;
       right: 0;
       display: flex;
       justify-content: center;
-      gap: 40px;
+      gap: 30px;
       z-index: 1000;
       padding: 0 20px;
-      opacity: 1 !important;
-      visibility: visible !important;
     }
 
     .arrow {
-      width: 56px;
-      height: 56px;
+      width: 50px;
+      height: 50px;
       background: rgba(255, 153, 204, 0.9);
       border-radius: 50%;
-      display: flex !important;
+      display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       transition: all 0.3s;
-      font-size: 26px;
+      font-size: 24px;
       color: #fff;
       user-select: none;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-
-    @media (max-width: 767px) {
-      .nav-arrows {
-        bottom: 30px;
-      }
-      .arrow {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-      }
-    }
-
-    @media (min-width: 768px) {
-      .nav-arrows {
-        bottom: 20px;
-        left: 20px;
-        justify-content: flex-start;
-        gap: 15px;
-      }
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      touch-action: manipulation;
     }
 
     .arrow:hover {
@@ -297,6 +283,29 @@
       pointer-events: none;
     }
 
+    /* Mobile arrow adjustments */
+    @media (max-width: 767px) {
+      .nav-arrows {
+        bottom: 20px;
+        gap: 20px;
+      }
+      .arrow {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+      }
+    }
+
+    /* Desktop arrow adjustments */
+    @media (min-width: 768px) {
+      .nav-arrows {
+        bottom: 30px;
+        left: 30px;
+        justify-content: flex-start;
+      }
+    }
+
+    /* ====== ANIMATIONS ====== */
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
@@ -304,7 +313,7 @@
   </style>
 </head>
 <body>
-  <!-- ====== ALL YOUR ORIGINAL PAGES PRESERVED ====== -->
+  <!-- ====== ALL 4 PAGES ====== -->
   <div class="page-container" id="pageContainer">
     <!-- Page 1 -->
     <div class="page page-1">
@@ -403,37 +412,37 @@
   </div>
 
   <audio autoplay loop id="bgMusic">
-    <source src="golden-hour.mp3" type="audio/mpeg" />
+    <source src="golden-hour.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // Your original JavaScript with swipe support added
+    // ====== PAGE NAVIGATION ======
     const pageContainer = document.getElementById('pageContainer');
     const arrowLeft = document.getElementById('arrowLeft');
     const arrowRight = document.getElementById('arrowRight');
     let currentPage = 0;
     const totalPages = 4;
 
-    // Swipe detection variables
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    // Original navigation functions
+    // Initialize navigation
     updateArrows();
 
-    arrowRight.addEventListener('click', () => {
+    // Arrow click handlers
+    arrowRight.addEventListener('click', goNext);
+    arrowLeft.addEventListener('click', goPrev);
+
+    function goNext() {
       if (currentPage < totalPages - 1) {
         currentPage++;
         moveToPage(currentPage);
       }
-    });
+    }
 
-    arrowLeft.addEventListener('click', () => {
+    function goPrev() {
       if (currentPage > 0) {
         currentPage--;
         moveToPage(currentPage);
       }
-    });
+    }
 
     function moveToPage(pageIndex) {
       const translateValue = -pageIndex * 25;
@@ -446,7 +455,32 @@
       arrowRight.classList.toggle('disabled', currentPage === totalPages - 1);
     }
 
-    // Photo carousel code (unchanged)
+    // ====== TOUCH SWIPE NAVIGATION ======
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    document.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, {passive: true});
+
+    function handleSwipe() {
+      const swipeThreshold = 50; // Minimum swipe distance in pixels
+      
+      if (touchEndX < touchStartX - swipeThreshold) {
+        // Swiped left - go next
+        goNext();
+      } else if (touchEndX > touchStartX + swipeThreshold) {
+        // Swiped right - go previous
+        goPrev();
+      }
+    }
+
+    // ====== PHOTO CAROUSEL ======
     const carousel = document.getElementById('carousel');
     const dotsContainer = document.getElementById('dots');
     const prevBtn = document.getElementById('prevMem');
@@ -454,6 +488,7 @@
     const memories = document.querySelectorAll('.memory');
     let currentMemory = 0;
 
+    // Create dots
     memories.forEach((_, index) => {
       const dot = document.createElement('div');
       dot.classList.add('dot');
@@ -464,6 +499,7 @@
       dotsContainer.appendChild(dot);
     });
 
+    // Carousel navigation
     prevBtn.addEventListener('click', () => {
       currentMemory = (currentMemory - 1 + memories.length) % memories.length;
       goToMemory(currentMemory);
@@ -489,47 +525,53 @@
       });
     }
 
-    // ====== ADDED SWIPE SUPPORT ======
-    document.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, {passive: true});
-
-    document.addEventListener('touchend', e => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, {passive: true});
-
-    function handleSwipe() {
-      const swipeThreshold = 50;
-      if (touchEndX < touchStartX - swipeThreshold) {
-        // Swipe left - next page
-        if (currentPage < totalPages - 1) {
-          currentPage++;
-          moveToPage(currentPage);
-        }
-      } else if (touchEndX > touchStartX + swipeThreshold) {
-        // Swipe right - previous page
-        if (currentPage > 0) {
-          currentPage--;
-          moveToPage(currentPage);
-        }
-      }
-    }
-
-    // ====== AUDIO AUTOPLAY FALLBACK ======
+    // ====== AUDIO AUTOPLAY ======
     document.addEventListener('DOMContentLoaded', function() {
       const audio = document.getElementById('bgMusic');
+      
+      // Try to play audio automatically
       const playAudio = () => {
         audio.play().catch(e => {
           console.log("Autoplay blocked, waiting for user interaction");
-          document.body.addEventListener('click', function playOnClick() {
+          // Add play button if autoplay fails
+          const playBtn = document.createElement('button');
+          playBtn.innerHTML = '🔊 Play Music';
+          playBtn.style.position = 'fixed';
+          playBtn.style.bottom = '80px';
+          playBtn.style.right = '20px';
+          playBtn.style.zIndex = '1000';
+          playBtn.style.padding = '10px 15px';
+          playBtn.style.borderRadius = '20px';
+          playBtn.style.backgroundColor = '#ff99cc';
+          playBtn.style.color = 'white';
+          playBtn.style.border = 'none';
+          playBtn.onclick = () => {
             audio.play();
-            document.body.removeEventListener('click', playOnClick);
-          }, { once: true });
+            playBtn.remove();
+          };
+          document.body.appendChild(playBtn);
         });
       };
+      
+      // Try to play on load
       playAudio();
+      
+      // Also allow play on first user interaction
+      document.body.addEventListener('click', function firstInteraction() {
+        playAudio();
+        document.body.removeEventListener('click', firstInteraction);
+      }, { once: true });
     });
+
+    // ====== MOBILE DETECTION ======
+    function isMobile() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // Adjust layout for mobile if needed
+    if (isMobile()) {
+      document.documentElement.style.touchAction = 'pan-y';
+    }
   </script>
 </body>
 </html>
