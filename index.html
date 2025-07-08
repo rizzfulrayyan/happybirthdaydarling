@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy birthday, my love</title>
+  <link rel="icon" href="https://emojicdn.elk.sh/🎂" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      margin: 0; 
+      padding: 0;
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      background: url('https://i.pinimg.com/736x/4f/d7/ce/4fd7ce13e677485ec2849de64473c258.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    .page-container {
+      display: flex;
+      width: 400%;
+      height: 100vh;
+      transition: transform 1s ease-in-out;
+    }
+
+    .page {
+      width: 25%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 90%;
+      max-width: 800px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      overflow-y: auto;
+      max-height: 75vh;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .content {
+      width: 100%;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    h1, .page-2 h2, .page-3 h2, .page-4 h2 {
+      font-family: 'Parisienne', cursive;
+      color: #ffcce6;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      line-height: 1.1;
+      background: linear-gradient(to right, #ffcce6, #ff99cc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
+
+    h1 { font-size: 2.5em; }
+    h2 { font-size: 2em; }
+    p { font-size: 1.1em; }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 5em; }
+      h2 { font-size: 4em; }
+      p { font-size: 1.2em; }
+      .container { max-height: 70vh; }
+    }
+
+    @keyframes glow {
+      0% {
+        filter: drop-shadow(0 0 5px rgba(255, 153, 204, 0.5));
+        text-shadow: 
+          0 0 5px #ffcce6,
+          0 0 10px rgba(255, 153, 204, 0.6),
+          0 0 15px rgba(255, 102, 178, 0.4);
+      }
+      100% {
+        filter: drop-shadow(0 0 15px rgba(255, 153, 204, 0.8));
+        text-shadow: 
+          0 0 10px #ffcce6,
+          0 0 20px rgba(255, 153, 204, 0.8),
+          0 0 30px rgba(255, 102, 178, 0.6);
+      }
+    }
+
+    p {
+      line-height: 1.8;
+      margin: 20px 15px;
+      text-align: center;
+    }
+
+    .heart {
+      font-size: 1.5rem;
+      color: #ffd6f3;
+      animation: float 3s ease-in-out infinite;
+      margin: 25px 0;
+      font-style: italic;
+      font-weight: 400;
+      text-shadow: 0 0 10px rgba(255, 214, 243, 0.7);
+    }
+
+    .footer {
+      font-size: 1.1em;
+      color: #ffd6f3;
+      margin-top: 30px;
+      font-family: 'Parisienne', cursive;
+      text-shadow: 0 0 8px rgba(255, 214, 243, 0.6);
+    }
+
+    .memories-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      position: relative;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .photo-carousel {
+      display: flex;
+      overflow: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 10px;
+    }
+
+    .memory {
+      min-width: 100%;
+      scroll-snap-align: start;
+      position: relative;
+    }
+
+    .memory-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .memory-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: white;
+      padding: 20px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      text-align: center;
+      font-family: 'Parisienne', cursive;
+      font-size: 1.5em;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 204, 230, 0.5);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: #ff99cc;
+      transform: scale(1.2);
+    }
+
+    .memory-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 204, 230, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      color: white;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .memory-prev {
+      left: 10px;
+    }
+
+    .memory-next {
+      right: 10px;
+    }
+
+    .nav-arrows {
+      position: fixed;
+      bottom: 15px;
+      left: 15px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .arrow {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 204, 230, 0.7);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 20px;
+      color: #fff;
+      user-select: none;
+    }
+
+    .arrow:hover {
+      background: rgba(255, 153, 204, 0.9);
+      transform: scale(1.1);
+    }
+
+    .arrow.disabled {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container" id="pageContainer">
+
+    <div class="page page-1">
+      <div class="container">
+        <h1>Happy 14th Birthday to the love of my life. ♥</h1>
+        <div class="content">
+          <p>
+            To the girl who made me value myself like no other, happy birthday, Naurin.<br>
+            You aren't just my girl, but my world, my universe, my gift, my treasure.<br>
+            My blessing, my love, my dearest, my partner, my wife, my everything.
+          </p>
+          <div class="heart">just remember, you're worth more than you think <3</div>
+          <p class="footer">11th July, 2025 🫶</p>
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="page page-2">
+      <div class="container">
+        <h2>My Promise to You ♥</h2>
+        <div class="content">
+          <p>
+            I promise to always be there for you<br>
+            That I'll never leave you alone<br>
+            That I'll always annoy you<br>
+            And love you more each day <3
+          </p>
+          <div class="heart">okay please marry me already 😔</div>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="page page-3">
+      <div class="container">
+        <h2>Times we met ♥</h2>
+        <div class="content">
+          <div class="memories-container">
+            <div class="photo-carousel" id="carousel">
+              <div class="memory">
+                <img src="image1.png" alt="Our memory" class="memory-img">
+                <div class="memory-caption">When we first met ♥</div>
+              </div>
+              <div class="memory">
+                <img src="image2.png" alt="Our memory" class="memory-img">
+                <div class="memory-caption">That scrumptious tongue of yours 👅</div>
+              </div>
+              <div class="memory">
+                <img src="image3.png" alt="Our memory" class="memory-img">
+                <div class="memory-caption">The prettiest girl with her husband <3</div>
+              </div>
+              <div class="memory">
+                <img src="image4.png" alt="Our memory" class="memory-img">
+                <div class="memory-caption">That kiss 💋😍</div>
+              </div>
+              <div class="memory">
+                <img src="image6.png" alt="Our memory" class="memory-img">
+                <div class="memory-caption">My favorite person</div>
+              </div>
+            </div>
+            <div class="carousel-dots" id="dots"></div>
+            <div class="memory-nav memory-prev" id="prevMem">❮</div>
+            <div class="memory-nav memory-next" id="nextMem">❯</div>
+          </div>
+          <p>
+            Every photo with you holds meaning<br>
+            More than any photo I've ever taken.<br>
+            These memories are my most treasured possessions
+          </p>
+          <div class="heart">I love you more than words can express</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="page page-4">
+      <div class="container">
+        <h2>Happy Birthday Darling ♥</h2>
+        <div class="content">
+          <div class="love-letter">
+            <p>You're not just my girlfriend, or wife. You're my home, my safe place, my greatest adventure.</p>
+            <p>On this birthday, I want to make you a promise beyond all others. I will spend every day proving that you made the right choice in loving me. I'll be the man who deserves your heart, who protects your smile, and who never lets a day pass without making you feel adored. However long forever is, it won't be enough time with you.</p>
+            <p>Happy 14th birthday to the girl who taught me the true meaning of love. May this year bring you even a fraction of the joy you've brought into my life. I love you more than these words could ever express, more than any poem could capture, more than forever could contain. I'll promise to you that no matter what happens, we will stick together, fix things together, and make it work out.</p>
+            <div class="heart">Happy birthday, I love you.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="nav-arrows">
+    <div class="arrow" id="arrowLeft">←</div>
+    <div class="arrow" id="arrowRight">→</div>
+  </div>
+
+  <audio autoplay loop id="bgMusic">
+    <source src="golden hour.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const pageContainer = document.getElementById('pageContainer');
+    const arrowLeft = document.getElementById('arrowLeft');
+    const arrowRight = document.getElementById('arrowRight');
+    let currentPage = 0;
+    const totalPages = 4;
+
+    updateArrows();
+
+    arrowRight.addEventListener('click', () => {
+      if (currentPage < totalPages - 1) {
+        currentPage++;
+        moveToPage(currentPage);
+      }
+    });
+
+    arrowLeft.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        moveToPage(currentPage);
+      }
+    });
+
+    function moveToPage(pageIndex) {
+      const translateValue = -pageIndex * 25;
+      pageContainer.style.transform = `translateX(${translateValue}%)`;
+      updateArrows();
+    }
+
+    function updateArrows() {
+      arrowLeft.classList.toggle('disabled', currentPage === 0);
+      arrowRight.classList.toggle('disabled', currentPage === totalPages - 1);
+    }
+
+    const carousel = document.getElementById('carousel');
+    const dotsContainer = document.getElementById('dots');
+    const prevBtn = document.getElementById('prevMem');
+    const nextBtn = document.getElementById('nextMem');
+    const memories = document.querySelectorAll('.memory');
+    let currentMemory = 0;
+
+    memories.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        goToMemory(index);
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentMemory = (currentMemory - 1 + memories.length) % memories.length;
+      goToMemory(currentMemory);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentMemory = (currentMemory + 1) % memories.length;
+      goToMemory(currentMemory);
+    });
+
+    function goToMemory(index) {
+      currentMemory = index;
+      carousel.scrollTo({
+        left: memories[index].offsetLeft,
+        behavior: 'smooth'
+      });
+      updateDots();
+    }
+
+    function updateDots() {
+      document.querySelectorAll('.dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentMemory);
+      });
+    }
+  </script>
+</body>
+</html>
