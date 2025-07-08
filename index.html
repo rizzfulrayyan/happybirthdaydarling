@@ -22,6 +22,13 @@
       font-weight: 300;
       overflow-x: hidden;
       -webkit-tap-highlight-color: transparent;
+      opacity: 0; /* Start invisible for fade-in */
+      animation: fadeIn 1.5s ease-in forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     
     body::before {
@@ -451,9 +458,9 @@
     <div class="arrow" id="arrowRight">→</div>
   </div>
 
-  <!-- AUDIO REVERTED TO YOUR ORIGINAL FILE -->
+  <!-- AUDIO AT 100% VOLUME AS REQUESTED -->
   <audio autoplay loop id="bgMusic">
-    <source src="https://raw.githubusercontent.com/rizzfulrayyan/happybirthdaydarling/main/golden-hour.mp3" type="audio/mpeg">
+    <source src="golden-hour.mp3" type="audio/mpeg">
   </audio>
 
   <script>
@@ -569,7 +576,7 @@
     // ====== AUDIO AUTOPLAY ======
     document.addEventListener('DOMContentLoaded', function() {
       const audio = document.getElementById('bgMusic');
-      audio.volume = 0.4; // Set comfortable volume level
+      audio.volume = 1.0; // Set to 100% volume as requested
       
       // Function to play audio with modern autoplay handling
       const playAudio = () => {
