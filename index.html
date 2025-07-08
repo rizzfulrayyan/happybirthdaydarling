@@ -370,10 +370,25 @@
   </div>
 
   <audio autoplay loop id="bgMusic">
-    <source src="https://raw.githubusercontent.com/rizzfulrayyan/happybirthdaydarling/main/golden-hour.mp3" type="audio/mpeg" />
-  </audio>
+  <source src="golden-hour.mp3" type="audio/mpeg" />
+</audio>
 
   <script>
+// Fallback for autoplay restrictions
+  document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('bgMusic');
+    const playAudio = () => {
+      audio.play().catch(e => {
+        console.log("Autoplay blocked, waiting for user interaction");
+        document.body.addEventListener('click', function playOnClick() {
+          audio.play();
+          document.body.removeEventListener('click', playOnClick);
+        }, { once: true });
+      });
+    };
+    playAudio();
+  });
+    
     const pageContainer = document.getElementById('pageContainer');
     const arrowLeft = document.getElementById('arrowLeft');
     const arrowRight = document.getElementById('arrowRight');
