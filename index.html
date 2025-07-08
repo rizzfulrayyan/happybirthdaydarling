@@ -310,6 +310,40 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+    
+    /* ====== FIRST PAGE IMAGE ====== */
+    .first-page-image {
+      width: 85%;
+      max-width: 500px;
+      height: 300px;
+      border-radius: 15px;
+      margin: 20px auto;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      position: relative;
+      border: 3px solid rgba(255, 204, 230, 0.4);
+      animation: pulseBorder 3s infinite;
+    }
+    
+    .first-page-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    @keyframes pulseBorder {
+      0%, 100% { border-color: rgba(255, 204, 230, 0.4); }
+      50% { border-color: rgba(255, 204, 230, 0.8); }
+    }
+    
+    /* Mobile image adjustments */
+    @media (max-width: 767px) {
+      .first-page-image {
+        height: 200px;
+        width: 90%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -319,6 +353,12 @@
     <div class="page page-1">
       <div class="container">
         <h1>Happy 14th Birthday to the love of my life. ♥</h1>
+        
+        <!-- Added image container -->
+        <div class="first-page-image">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Birthday Celebration">
+        </div>
+        
         <div class="content">
           <p>
             To the girl who made me value myself like no other, happy birthday, Naurin.<br>
@@ -411,6 +451,7 @@
     <div class="arrow" id="arrowRight">→</div>
   </div>
 
+  <!-- AUDIO REVERTED TO YOUR ORIGINAL FILE -->
   <audio autoplay loop id="bgMusic">
     <source src="golden-hour.mp3" type="audio/mpeg">
   </audio>
@@ -528,39 +569,59 @@
     // ====== AUDIO AUTOPLAY ======
     document.addEventListener('DOMContentLoaded', function() {
       const audio = document.getElementById('bgMusic');
+      audio.volume = 0.4; // Set comfortable volume level
       
-      // Try to play audio automatically
+      // Function to play audio with modern autoplay handling
       const playAudio = () => {
-        audio.play().catch(e => {
-          console.log("Autoplay blocked, waiting for user interaction");
-          // Add play button if autoplay fails
-          const playBtn = document.createElement('button');
-          playBtn.innerHTML = '🔊 Play Music';
-          playBtn.style.position = 'fixed';
-          playBtn.style.bottom = '80px';
-          playBtn.style.right = '20px';
-          playBtn.style.zIndex = '1000';
-          playBtn.style.padding = '10px 15px';
-          playBtn.style.borderRadius = '20px';
-          playBtn.style.backgroundColor = '#ff99cc';
-          playBtn.style.color = 'white';
-          playBtn.style.border = 'none';
-          playBtn.onclick = () => {
-            audio.play();
-            playBtn.remove();
-          };
-          document.body.appendChild(playBtn);
-        });
+        // Try to play immediately
+        const promise = audio.play();
+        
+        if (promise !== undefined) {
+          promise.catch(error => {
+            // Autoplay was prevented - show message and try after interaction
+            console.log('Autoplay prevented. Waiting for user interaction.');
+            
+            // Show a subtle notification that music will play on interaction
+            const playIndicator = document.createElement('div');
+            playIndicator.innerHTML = 'Music will play after interaction';
+            playIndicator.style.position = 'fixed';
+            playIndicator.style.bottom = '100px';
+            playIndicator.style.right = '20px';
+            playIndicator.style.backgroundColor = 'rgba(255, 153, 204, 0.8)';
+            playIndicator.style.color = 'white';
+            playIndicator.style.padding = '8px 15px';
+            playIndicator.style.borderRadius = '20px';
+            playIndicator.style.zIndex = '10000';
+            playIndicator.style.fontSize = '14px';
+            document.body.appendChild(playIndicator);
+            
+            // Remove after a few seconds
+            setTimeout(() => {
+              playIndicator.style.opacity = '0';
+              setTimeout(() => {
+                document.body.removeChild(playIndicator);
+              }, 1000);
+            }, 3000);
+            
+            // Try to play on first user interaction
+            const playOnInteraction = () => {
+              audio.play().then(() => {
+                // Successfully started playback
+                document.body.removeEventListener('click', playOnInteraction);
+                document.body.removeEventListener('touchstart', playOnInteraction);
+              }).catch(e => {
+                console.log('Still unable to play after interaction', e);
+              });
+            };
+            
+            document.body.addEventListener('click', playOnInteraction);
+            document.body.addEventListener('touchstart', playOnInteraction);
+          });
+        }
       };
       
-      // Try to play on load
+      // Attempt to play audio on page load
       playAudio();
-      
-      // Also allow play on first user interaction
-      document.body.addEventListener('click', function firstInteraction() {
-        playAudio();
-        document.body.removeEventListener('click', firstInteraction);
-      }, { once: true });
     });
 
     // ====== MOBILE DETECTION ======
