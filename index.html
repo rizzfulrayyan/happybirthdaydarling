@@ -45,14 +45,14 @@
     /* ====== PAGE CONTAINER ====== */
     .page-container {
       display: flex;
-      width: 400%;
+      width: 500%; /* Changed from 400% to 500% for 5 pages */
       height: 100vh;
       transition: transform 0.5s ease-in-out;
       touch-action: pan-y;
     }
 
     .page {
-      width: 25%;
+      width: 20%; /* Changed from 25% to 20% for 5 pages */
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -78,6 +78,15 @@
       margin: 20px 0;
     }
 
+    /* Spotify embed styling */
+    .spotify-embed {
+      margin: 20px auto;
+      max-width: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
     /* Mobile container adjustments */
     @media (max-width: 767px) {
       .container {
@@ -88,7 +97,7 @@
     }
 
     /* ====== TYPOGRAPHY ====== */
-    h1, .page-2 h2, .page-3 h2, .page-4 h2 {
+    h1, .page-2 h2, .page-3 h2, .page-4 h2, .page-5 h2 {
       font-family: 'Parisienne', cursive;
       color: #ffcce6;
       margin: 15px 0;
@@ -123,6 +132,16 @@
           0 0 15px #ffcce6,
           0 0 25px rgba(255, 153, 204, 0.8);
       }
+    }
+
+    /* Naurin glow effect - ONLY on first page */
+    .page-1 .content p span.naurin-glow {
+      animation: glow 2.5s ease-in-out infinite alternate;
+      background: linear-gradient(to right, #ffcce6, #ff99cc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
     }
 
     p {
@@ -354,7 +373,7 @@
   </style>
 </head>
 <body>
-  <!-- ====== ALL 4 PAGES ====== -->
+  <!-- ====== ALL 5 PAGES NOW ====== -->
   <div class="page-container" id="pageContainer">
     <!-- Page 1 -->
     <div class="page page-1">
@@ -368,9 +387,14 @@
         
         <div class="content">
           <p>
-            To the girl who made me value myself like no other, happy birthday, Naurin.<br>
+            To the girl who made me value myself like no other, happy birthday, <span class="naurin-glow">Naurin. 💗</span><br>
             You aren't just my girl, but my world, my universe, my gift, my treasure.<br>
-            My blessing, my love, my dearest, my partner, my wife, my everything.
+            My blessing, my love, my dearest, my partner, my wife, my everything. <br>
+          I want to make this birthday memorable for you <br>
+            Cause your ahh keeps forgetting your OWN birthday. <br>
+            And I put in all my effort, skills,<br>
+            and knowledge to make this special gift, as I can't meet you. <br>
+            But when I do, I'll make sure you'll get a proper gift. <br>
           </p>
           <div class="heart">just remember, you're worth more than you think <3</div>
           <p class="footer">11th July, 2025 🫶</p>
@@ -378,23 +402,33 @@
       </div>
     </div>
 
-    <!-- Page 2 -->
+  
     <div class="page page-2">
       <div class="container">
-        <h2>My Promise to You ♥</h2>
+        <h1>My Promise to You ♥</h1>
         <div class="content">
           <p>
             I promise to always be there for you<br>
             That I'll never leave you alone<br>
             That I'll always annoy you<br>
+            That I'll never make you feel lonely<br>
+            That I'll always be there for you<br>
+            That I'll appreciate all your efforts<br>
+            That i'll never make you feel unloved<br>
+            That I'll always see your so-called 'flaws' as perfection<br>
+            That I'll help you become a better version of yourself<br>
+            That I'm ready to go through everything to keep this relationship strong<br>
+
+            
             And love you more each day <3
           </p>
-          <div class="heart">okay please marry me already 😔</div>
+          <div class="heart">Just marry me already.</div>
+          <p class="footer">11th July, 2025 🫶</p>
         </div>
       </div>
     </div>
 
-    <!-- Page 3 -->
+  
     <div class="page page-3">
       <div class="container">
         <h2>Times we met ♥</h2>
@@ -419,7 +453,7 @@
               </div>
               <div class="memory">
                 <img src="https://raw.githubusercontent.com/rizzfulrayyan/happybirthdaydarling/main/image6.png" alt="Our memory" class="memory-img">
-                <div class="memory-caption">My favorite person</div>
+                <div class="memory-caption">CUTIEEEEEE</div>
               </div>
             </div>
             <div class="carousel-dots" id="dots"></div>
@@ -429,9 +463,12 @@
           <p>
             Every photo with you holds meaning<br>
             More than any photo I've ever taken.<br>
-            These memories are my most treasured possessions
+            These memories are my most treasured possessions.<br>
+            And I'm grateful for every moment we've shared. <br>
+            And that there's a lifetime of memories yet to come. <br>
           </p>
-          <div class="heart">I love you more than words can express</div>
+          <div class="heart">I love you more than words can express.</div>
+          <p class="footer">11th July, 2025 🫶</p>
         </div>
       </div>
     </div>
@@ -446,7 +483,33 @@
             <p>On this birthday, I want to make you a promise beyond all others. I will spend every day proving that you made the right choice in loving me. I'll be the man who deserves your heart, who protects your smile, and who never lets a day pass without making you feel adored. However long forever is, it won't be enough time with you.</p>
             <p>Happy 14th birthday to the girl who taught me the true meaning of love. May this year bring you even a fraction of the joy you've brought into my life. I love you more than these words could ever express, more than any poem could capture, more than forever could contain. I'll promise to you that no matter what happens, we will stick together, fix things together, and make it work out.</p>
             <div class="heart">Happy birthday, I love you.</div>
+            <p class="footer">11th July, 2025 🫶</p>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page page-5">
+      <div class="container">
+        <h2>Extra: Songs That Remind Me of You ♫</h2>
+        <div class="content">
+          <p>
+            Every single damn love song reminds me of you.<br>
+            I mean, thats the entire point of listening to them.<br>
+            (Yes, I included that one song you think is overplayed.)<br>
+          </p>
+          
+     
+          <div class="spotify-embed" id="spotifyEmbed">
+            
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5SEKjrVaHIiIP7HpxiBXEO?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            
+          </div>
+          
+          <div class="heart">Happy birthday, and I love you.</div>
+
+
+           <p class="footer">11th July, 2025 🫶</p>
         </div>
       </div>
     </div>
@@ -469,7 +532,7 @@
     const arrowLeft = document.getElementById('arrowLeft');
     const arrowRight = document.getElementById('arrowRight');
     let currentPage = 0;
-    const totalPages = 4;
+    const totalPages = 5; // Changed from 4 to 5
 
     // Initialize navigation
     updateArrows();
@@ -493,7 +556,7 @@
     }
 
     function moveToPage(pageIndex) {
-      const translateValue = -pageIndex * 25;
+      const translateValue = -pageIndex * 20; // Changed from 25 to 20 for 5 pages
       pageContainer.style.transform = `translateX(${translateValue}%)`;
       updateArrows();
     }
@@ -517,13 +580,11 @@
     }, {passive: true});
 
     function handleSwipe() {
-      const swipeThreshold = 50; // Minimum swipe distance in pixels
+      const swipeThreshold = 50;
       
       if (touchEndX < touchStartX - swipeThreshold) {
-        // Swiped left - go next
         goNext();
       } else if (touchEndX > touchStartX + swipeThreshold) {
-        // Swiped right - go previous
         goPrev();
       }
     }
@@ -576,19 +637,15 @@
     // ====== AUDIO AUTOPLAY ======
     document.addEventListener('DOMContentLoaded', function() {
       const audio = document.getElementById('bgMusic');
-      audio.volume = 1.0; // Set to 100% volume as requested
+      audio.volume = 1.0;
       
-      // Function to play audio with modern autoplay handling
       const playAudio = () => {
-        // Try to play immediately
         const promise = audio.play();
         
         if (promise !== undefined) {
           promise.catch(error => {
-            // Autoplay was prevented - show message and try after interaction
             console.log('Autoplay prevented. Waiting for user interaction.');
             
-            // Show a subtle notification that music will play on interaction
             const playIndicator = document.createElement('div');
             playIndicator.innerHTML = 'Music will play after interaction';
             playIndicator.style.position = 'fixed';
@@ -602,7 +659,6 @@
             playIndicator.style.fontSize = '14px';
             document.body.appendChild(playIndicator);
             
-            // Remove after a few seconds
             setTimeout(() => {
               playIndicator.style.opacity = '0';
               setTimeout(() => {
@@ -610,10 +666,8 @@
               }, 1000);
             }, 3000);
             
-            // Try to play on first user interaction
             const playOnInteraction = () => {
               audio.play().then(() => {
-                // Successfully started playback
                 document.body.removeEventListener('click', playOnInteraction);
                 document.body.removeEventListener('touchstart', playOnInteraction);
               }).catch(e => {
@@ -627,7 +681,6 @@
         }
       };
       
-      // Attempt to play audio on page load
       playAudio();
     });
 
@@ -636,7 +689,6 @@
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 
-    // Adjust layout for mobile if needed
     if (isMobile()) {
       document.documentElement.style.touchAction = 'pan-y';
     }
