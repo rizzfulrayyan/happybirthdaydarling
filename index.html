@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
   
   <style>
-    /* ====== BASE STYLES ====== */
+  
     body {
       margin: 0;
       padding: 0;
@@ -22,7 +22,7 @@
       font-weight: 300;
       overflow-x: hidden;
       -webkit-tap-highlight-color: transparent;
-      opacity: 0; /* Start invisible for fade-in */
+      opacity: 0; 
       animation: fadeIn 1.5s ease-in forwards;
     }
     
@@ -42,17 +42,17 @@
       z-index: -1;
     }
 
-    /* ====== PAGE CONTAINER ====== */
+ 
     .page-container {
       display: flex;
-      width: 500%; /* Changed from 400% to 500% for 5 pages */
+      width: 500%; 
       height: 100vh;
       transition: transform 0.5s ease-in-out;
       touch-action: pan-y;
     }
 
     .page {
-      width: 20%; /* Changed from 25% to 20% for 5 pages */
+      width: 20%; 
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -62,7 +62,7 @@
       box-sizing: border-box;
     }
 
-    /* ====== CONTENT CONTAINER ====== */
+    
     .container {
       position: relative;
       z-index: 1;
@@ -78,7 +78,7 @@
       margin: 20px 0;
     }
 
-    /* Spotify embed styling */
+  
     .spotify-embed {
       margin: 20px auto;
       max-width: 500px;
@@ -87,7 +87,7 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
-    /* Mobile container adjustments */
+  
     @media (max-width: 767px) {
       .container {
         max-height: 75vh;
@@ -96,7 +96,6 @@
       }
     }
 
-    /* ====== TYPOGRAPHY ====== */
     h1, .page-2 h2, .page-3 h2, .page-4 h2, .page-5 h2 {
       font-family: 'Parisienne', cursive;
       color: #ffcce6;
@@ -110,7 +109,6 @@
       animation: glow 2.5s ease-in-out infinite alternate;
     }
 
-    /* Responsive font sizes */
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
     p { font-size: 1.1rem; }
@@ -134,7 +132,7 @@
       }
     }
 
-    /* Naurin glow effect - ONLY on first page */
+
     .page-1 .content p span.naurin-glow {
       animation: glow 2.5s ease-in-out infinite alternate;
       background: linear-gradient(to right, #ffcce6, #ff99cc);
@@ -168,7 +166,7 @@
       text-shadow: 0 0 8px rgba(255, 214, 243, 0.6);
     }
 
-    /* ====== PHOTO CAROUSEL ====== */
+ 
     .memories-container {
       width: 100%;
       max-width: 600px;
@@ -264,7 +262,7 @@
       right: 10px;
     }
 
-    /* ====== NAVIGATION ARROWS ====== */
+
     .nav-arrows {
       position: fixed;
       bottom: 25px;
